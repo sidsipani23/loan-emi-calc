@@ -1,4 +1,4 @@
-import { SET_INTEREST, SET_LOANAMT, SET_TENURE, SET_ALL } from "../types";
+import { SET_INTEREST, SET_LOANAMT, SET_TENURE } from "../types";
 export default (state, action) => {
 	switch (action.type) {
 		// Setting the interest rate
@@ -18,14 +18,6 @@ export default (state, action) => {
 			return {
 				...state,
 				loanAmt: action.payload,
-			};
-		//Setting all the components
-		case SET_ALL:
-			return {
-				...state,
-				emi: action.payload.emi,
-				interestAmt: action.payload.intAmt,
-				totalAmt: action.payload.totalAmt,
 			};
 		//Default case
 		default:

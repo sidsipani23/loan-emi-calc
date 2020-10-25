@@ -3,7 +3,7 @@ import React from "react";
 const Info = () => {
 	//Data file for static data to be shown
 	return (
-		<div class='container'>
+		<div className='container'>
 			<div className='card-panel '>
 				<h5>What is a Home Loan EMI and it's calculator?</h5>
 				<p>
@@ -17,23 +17,16 @@ const Info = () => {
 				<p>
 					The mathematical formula for calculating EMIs is = [P x R x
 					(1+R)^N]/[(1+R)^N-1] where:
-					<ul>
-						<li>
-							<b>‘P’</b> represents the loan amount or principal
-						</li>
-						<li>
-							<b>‘N’</b> is the number of monthly instalments
-						</li>
-						<li>
-							<b>‘R’</b> is the interest rate per month. Therefore, if the rate
-							of interest per annum is 11%, then the value of ‘R’ will be 11/(12
-							x 100)
-						</li>
-					</ul>
+					<b>‘P’</b> represents the loan amount or principal
+					<br />
+					<b>‘N’</b> is the number of monthly instalments
+					<br />
+					<b>‘R’</b> is the interest rate per month. Therefore, if the rate of
+					interest per annum is 11%, then the value of ‘R’ will be 11/(12 x 100)
 				</p>
 			</div>
 			<br />
-			<h4 class='text-darken-2 center-align'>
+			<h4 className='text-darken-2 center-align'>
 				<b>
 					<span style={{ color: "#87431d" }}>Frequently Asked Questions</span>
 				</b>

@@ -3,12 +3,24 @@ import { Pie } from "react-chartjs-2";
 import LoanContext from "../../context/loan/loanContext";
 const Graph = () => {
 	const loanContext = useContext(LoanContext);
-	const { loanAmt, emi, totalAmt, interestAmt } = loanContext;
+	const { loanAmt, interestRate, tenure } = loanContext;
 	const data = {
 		labels: ["Principal Amount", "Interest Amount"],
 		datasets: [
 			{
-				data: [loanAmt, interestAmt],
+				data: [
+					loanAmt,
+					//Interest Amount
+					(
+						(
+							loanAmt *
+							((interestRate * Math.pow(1 + interestRate, tenure)) /
+								(Math.pow(1 + interestRate, tenure) - 1))
+						).toFixed(0) *
+							tenure -
+						loanAmt
+					).toFixed(0),
+				],
 				backgroundColor: ["#db6400", "#16697a"],
 			},
 		],
@@ -23,7 +35,22 @@ const Graph = () => {
 				Monthly Home Loan EMI
 				<br />
 				<span style={{ fontSize: "2rem", color: "#bb2205" }}>
-					<b>₹ {emi}</b>
+					<b>
+						₹{/* EMI calculation */}
+						{isNaN(
+							(
+								loanAmt *
+								((interestRate * Math.pow(1 + interestRate, tenure)) /
+									(Math.pow(1 + interestRate, tenure) - 1))
+							).toFixed(0)
+						)
+							? 0
+							: (
+									loanAmt *
+									((interestRate * Math.pow(1 + interestRate, tenure)) /
+										(Math.pow(1 + interestRate, tenure) - 1))
+							  ).toFixed(0)}
+					</b>
 				</span>
 				<br />
 				<br />
@@ -37,14 +64,56 @@ const Graph = () => {
 				Interest Amount
 				<br />
 				<span style={{ fontSize: "1.5rem", color: "#16697a" }}>
-					<b>₹ {interestAmt}</b>
+					<b>
+						₹ {/* Interest Amount= EMI*tenure-Loan Amount */}
+						{isNaN(
+							(
+								(
+									loanAmt *
+									((interestRate * Math.pow(1 + interestRate, tenure)) /
+										(Math.pow(1 + interestRate, tenure) - 1))
+								).toFixed(0) *
+									tenure -
+								loanAmt
+							).toFixed(0)
+						)
+							? 0
+							: (
+									(
+										loanAmt *
+										((interestRate * Math.pow(1 + interestRate, tenure)) /
+											(Math.pow(1 + interestRate, tenure) - 1))
+									).toFixed(0) *
+										tenure -
+									loanAmt
+							  ).toFixed(0)}
+					</b>
 				</span>
 				<br />
 				<br />
 				Total Amount Payable
 				<br />
 				<span style={{ fontSize: "1.5rem" }}>
-					<b>₹ {totalAmt}</b>
+					<b>
+						₹ {/* Total Amount= Interest Amount + Principal Amount */}
+						{isNaN(
+							(
+								(
+									loanAmt *
+									((interestRate * Math.pow(1 + interestRate, tenure)) /
+										(Math.pow(1 + interestRate, tenure) - 1))
+								).toFixed(0) * tenure
+							).toFixed(0)
+						)
+							? loanAmt
+							: (
+									(
+										loanAmt *
+										((interestRate * Math.pow(1 + interestRate, tenure)) /
+											(Math.pow(1 + interestRate, tenure) - 1))
+									).toFixed(0) * tenure
+							  ).toFixed(0)}
+					</b>
 				</span>
 			</div>
 			{/* Right side of the graph section */}

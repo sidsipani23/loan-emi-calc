@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../Siddhartha_Profile.jpg";
 const About = () => {
 	return (
-		<div class='container center-align'>
+		<div className='container center-align'>
 			<img
 				src={logo}
 				alt='_profilePic'

@@ -33,7 +33,6 @@ const Form = () => {
 					onChange={(e) => {
 						//Setting the loan Amount and all other components
 						setLoanAmt(e.target.value);
-						setAllItems(interestRate, loanAmt, tenure);
 						e.preventDefault();
 					}}
 				/>
@@ -57,8 +56,6 @@ const Form = () => {
 					onChange={(e) => {
 						//Setting the tenure and all other components
 						setTenure(e.target.value);
-						setAllItems(interestRate, loanAmt, tenure);
-
 						e.preventDefault();
 					}}
 					defaultValue='20'
@@ -87,8 +84,6 @@ const Form = () => {
 					onChange={(e) => {
 						//Setting the interest Rate and all other components
 						setInterest(e.target.value);
-
-						setAllItems(interestRate, loanAmt, tenure);
 						e.preventDefault();
 					}}
 					defaultValue='15'
