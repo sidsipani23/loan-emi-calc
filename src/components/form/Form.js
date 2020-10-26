@@ -9,7 +9,6 @@ const Form = () => {
 		setInterest,
 		setTenure,
 		setLoanAmt,
-		setAllItems,
 	} = loanContext;
 
 	return (
@@ -35,6 +34,7 @@ const Form = () => {
 						setLoanAmt(e.target.value);
 						e.preventDefault();
 					}}
+					value={loanAmt}
 				/>
 				{"₹ 1 Lakh"}
 				<span className='right'>{"₹ 10 crore"}</span>
@@ -58,7 +58,7 @@ const Form = () => {
 						setTenure(e.target.value);
 						e.preventDefault();
 					}}
-					defaultValue='20'
+					value={tenure / 12}
 				/>
 				{"1"}
 				<span className='right'>{"30"}</span>
@@ -86,7 +86,7 @@ const Form = () => {
 						setInterest(e.target.value);
 						e.preventDefault();
 					}}
-					defaultValue='15'
+					value={(interestRate * 1200).toFixed(2)}
 				/>
 				{"0"}
 				<span className='right'>{"15"}</span>
